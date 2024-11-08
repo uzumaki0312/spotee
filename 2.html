@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -7,49 +7,50 @@
     <style>
         /* Fontes */
         body {
-            background: linear-gradient(135deg, #121212, #191414); /* Gradiente suave e mais próximo do Spotify */
+            background: linear-gradient(135deg, #121212, #191414);
             color: white;
-            font-family: 'Roboto', Arial, sans-serif; /* Usando Roboto para mais proximidade ao Spotify */
+            font-family: 'Roboto', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             text-align: center;
-            padding: 0 20px; 
-            position: relative; 
-            padding-bottom: 60px; 
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow-x: hidden; /* Evita margens brancas ao arrastar */
         }
 
         /* Logo do Spotify */
         .spotify-logo {
             width: 180px;
-            margin-bottom: 30px;
+            max-width: 90%;
+            margin-bottom: 20px;
         }
 
         /* Estilo do texto */
         .text {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-size: 1.125rem;
             line-height: 1.6;
-            max-width: 500px; 
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .highlight-green {
-            color: #1DB954; /* Verde do Spotify */
+            color: #1DB954;
             font-weight: bold;
-            font-size: 3rem; 
-            margin-bottom: 20px; 
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             display: block;
         }
 
         .highlight-bold {
             font-weight: bold;
             text-transform: uppercase;
-            margin-top: 10px;
         }
 
         .highlight-lowercase {
@@ -66,13 +67,13 @@
         /* Barra de Progresso */
         .progress-container {
             width: 100%;
-            max-width: 600px; 
+            max-width: 600px;
             background-color: #444;
             border-radius: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             position: relative;
             padding: 5px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Aumentando a sombra para dar mais profundidade */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .progress-bar {
@@ -103,12 +104,12 @@
             font-size: 1.1rem;
             cursor: pointer;
             font-family: 'Roboto', Arial, sans-serif;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra mais suave e profunda */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             width: 100%;
             max-width: 300px;
             margin-top: 20px;
-            text-transform: uppercase; 
+            text-transform: uppercase;
         }
 
         button:hover {
@@ -149,25 +150,33 @@
                 font-size: 1rem;
             }
             .highlight-green {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+            }
+            .progress-container {
+                max-width: 90%;
             }
             .progress-text {
                 font-size: 0.875rem;
             }
             button {
-                padding: 14px 25px;
+                padding: 14px 20px;
+                max-width: 80%;
+            }
+            .spotify-logo {
+                width: 120px;
             }
         }
 
         /* Rodapé */
         .footer {
-            position: absolute;
-            bottom: 10px;
+            position: relative;
+            bottom: 0;
             width: 100%;
             font-size: 0.875rem;
             color: #ccc;
             text-align: center;
             padding: 10px 20px;
+            margin-top: auto; /* Mantém o rodapé no fundo */
         }
 
         .footer a {
@@ -175,14 +184,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-
-	.highlight-bold {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 0; /* Remove o espaço superior */
-}
-
-
     </style>
 </head>
 <body>
@@ -192,13 +193,7 @@
     <!-- Texto -->
     <div class="text">
         <span class="highlight-green">Parabéns</span>
-
-	 <!-- Imagem adicionada abaixo da palavra "Parabéns" -->
-  
-  
-<img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; margin-top: 10px; margin-bottom: 10px">
-<br><br>
-
+        <img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; max-width: 100%; margin-top: 10px; margin-bottom: 10px">
         <span class="highlight-bold">Saque solicitado com sucesso!</span>
         <span class="highlight-lowercase">Sua vaga está garantida! Temos uma taxa ÚNICA de cadastro de</span>
         <span class="highlight-value">R$20,90</span>
