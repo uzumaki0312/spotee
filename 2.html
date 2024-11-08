@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página com Barra de Progresso</title>
     <style>
+        /* Define altura e overflow */
+        html, body {
+            height: 100%;
+            overflow: hidden; /* Remove scroll extra */
+            margin: 0;
+            padding: 0;
+        }
+
         /* Fontes */
         body {
             background: linear-gradient(135deg, #121212, #191414);
@@ -15,12 +23,9 @@
             align-items: center;
             flex-direction: column;
             min-height: 100vh;
-            margin: 0;
+            box-sizing: border-box;
             text-align: center;
             padding: 20px;
-            box-sizing: border-box;
-            position: relative;
-            overflow-x: hidden; /* Evita margens brancas ao arrastar */
         }
 
         /* Logo do Spotify */
@@ -193,7 +198,8 @@
     <!-- Texto -->
     <div class="text">
         <span class="highlight-green">Parabéns</span>
-        <img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; max-width: 100%; margin-top: 10px; margin-bottom: 10px">
+        <img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; max-width: 100%; margin: 10px auto; display: block;">
+
         <span class="highlight-bold">Saque solicitado com sucesso!</span>
         <span class="highlight-lowercase">Sua vaga está garantida! Temos uma taxa ÚNICA de cadastro de</span>
         <span class="highlight-value">R$20,90</span>
