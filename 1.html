@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página com Barra de Progresso</title>
     <style>
-        /* Importando fontes modernas do Google Fonts */
+        /* Fontes */
         body {
-            background: linear-gradient(135deg, #121212, #222222); /* Gradiente suave de fundo */
+            background: linear-gradient(135deg, #121212, #191414);
             color: white;
-            font-family: 'Roboto', Arial, sans-serif; /* Fonte mais moderna e próxima do Spotify */
+            font-family: 'Roboto', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,15 +17,16 @@
             height: 100vh;
             margin: 0;
             text-align: center;
-            padding: 0 20px; /* Adiciona padding nas laterais */
-            position: relative; /* Para garantir que o rodapé fique no fundo */
-            padding-bottom: 60px; /* Espaçamento para o rodapé não colidir com o botão */
+            padding: 0 20px;
+            position: relative;
+            padding-bottom: 60px;
         }
 
         /* Logo do Spotify */
         .spotify-logo {
-            width: 180px; /* Tamanho do logo */
-            margin-bottom: 30px; /* Mais espaçamento para separar do texto */
+            width: 180px;
+            max-width: 100%;
+            margin-bottom: 30px;
         }
 
         /* Estilo do texto */
@@ -33,15 +34,16 @@
             margin-bottom: 30px;
             font-size: 1.125rem;
             line-height: 1.6;
-            max-width: 500px; /* Limita a largura do texto */
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .highlight-green {
-            color: #1DB954; /* Verde do Spotify */
+            color: #1DB954;
             font-weight: bold;
-            margin-bottom: 20px; /* Deixa o espaçamento para "Saque solicitado" */
+            font-size: 3rem;
+            margin-bottom: 20px;
             display: block;
         }
 
@@ -52,27 +54,26 @@
         }
 
         .highlight-lowercase {
-            text-transform: lowercase; /* Altera para minúsculas */
+            text-transform: lowercase;
         }
 
-        /* Estilo da "Chave PIX cadastrada" */
-        .highlight-green-pix {
-            color: #1DB954; /* Verde do Spotify */
+        .highlight-value {
+            font-size: 1.125rem;
             font-weight: bold;
-            margin-bottom: 0; /* Sem espaço extra */
-            display: inline; /* Faz o texto ocupar apenas o espaço necessário */
+            text-transform: uppercase;
+            color: #1DB954;
         }
 
         /* Barra de Progresso */
         .progress-container {
             width: 100%;
-            max-width: 600px; /* Limita o tamanho da barra de progresso */
+            max-width: 600px;
             background-color: #444;
             border-radius: 10px;
             margin-bottom: 30px;
             position: relative;
             padding: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para destaque */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .progress-bar {
@@ -103,11 +104,12 @@
             font-size: 1.1rem;
             cursor: pointer;
             font-family: 'Roboto', Arial, sans-serif;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             width: 100%;
             max-width: 300px;
             margin-top: 20px;
+            text-transform: uppercase;
         }
 
         button:hover {
@@ -126,7 +128,7 @@
                 width: 0%;
             }
             100% {
-                width: 90%;
+                width: 94%;
             }
         }
 
@@ -148,20 +150,27 @@
                 font-size: 1rem;
             }
             .highlight-green {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+            }
+            .progress-container {
+                max-width: 90%;
             }
             .progress-text {
                 font-size: 0.875rem;
             }
             button {
-                padding: 14px 25px;
+                padding: 14px 20px;
+                max-width: 80%;
+            }
+            .spotify-logo, .footer img {
+                width: 100px;
             }
         }
 
         /* Rodapé */
         .footer {
             position: absolute;
-            bottom: 10px; /* Coloca o rodapé no fundo da página */
+            bottom: 10px;
             width: 100%;
             font-size: 0.875rem;
             color: #ccc;
@@ -170,7 +179,7 @@
         }
 
         .footer a {
-            color: #1DB954; /* Verde do Spotify */
+            color: #1DB954;
             text-decoration: none;
             font-weight: bold;
         }
@@ -183,24 +192,26 @@
 
     <!-- Texto -->
     <div class="text">
-        <span class="highlight-green">Saque solicitado</span>
-        <span class="highlight-bold">Saque solicitado com sucesso!</span> <!-- Adicionado ponto de exclamação -->
-        <span class="highlight-lowercase">seu saque será enviado em</span>
-        <span class="highlight-green-pix">Chave PIX cadastrada</span> <!-- Modificado para não ter espaço extra -->
-        Caso deseje antecipar seu saque e receber imediatamente seu dinheiro, <span class="highlight-bold">pague a taxa de antecipação e saque agora</span>
-        <span class="highlight-bold">Clique no botão abaixo</span>
+        <span class="highlight-green">Parabéns</span>
+        <img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; margin-top: 10px; margin-bottom: 10px">
+        <span class="highlight-bold">Saque solicitado com sucesso!</span>
+        <span class="highlight-lowercase">Sua vaga está garantida! Temos uma taxa ÚNICA de cadastro de</span>
+        <span class="highlight-value">R$20,90</span>
+        <span class="highlight-lowercase"> para realizar seu saque.</span>
+        <br><br>
+        <span class="highlight-bold"><em>(OBRIGATÓRIA)</em></span>
     </div>
 
     <!-- Barra de Progresso -->
     <div class="progress-container">
         <div class="progress-bar"></div>
-        <div class="progress-text">90%</div>
+        <div class="progress-text">94%</div>
     </div>
 
     <!-- Botão -->
     <a href="URL_DO_SEU_PAGAMENTO_AQUI" target="_blank">
-    <button>Antecipar Pagamento</button>
-</a>
+        <button>Pagar taxa e sacar</button>
+    </a>
 
     <!-- Rodapé -->
     <div class="footer">
