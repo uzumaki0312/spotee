@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com Barra de Progresso</title>
+    <title>Cadrastra-se</title>
     <style>
-	
-		html, body {
-
-            overflow-x: hidden; /* Remove o scroll horizontal */
-        }
         /* Importando fontes modernas do Google Fonts */
         body {
             background: linear-gradient(135deg, #121212, #222222); /* Gradiente suave de fundo */
             color: white;
             font-family: 'Roboto', Arial, sans-serif; /* Fonte mais moderna e próxima do Spotify */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
             margin: 0;
             text-align: center;
-            padding: 0 20px; /* Adiciona padding nas laterais */
-            position: relative; /* Para garantir que o rodapé fique no fundo */
-            padding-bottom: 60px; /* Espaçamento para o rodapé não colidir com o botão */
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Previne o overflow horizontal */
+        }
+
+        /* Cabeçalho com o logo do Spotify */
+        header {
+            width: 100%;
+            background-color: #121212;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            text-align: center;
         }
 
         /* Logo do Spotify */
         .spotify-logo {
-            width: 180px; /* Tamanho do logo */
-            margin-bottom: 30px; /* Mais espaçamento para separar do texto */
+            max-width: 100%;
+            width: 180px; /* Valor base para telas maiores */
+            height: auto; /* Mantém a proporção do logo */
+        }
+
+        /* Estilo do conteúdo abaixo do cabeçalho */
+        .content {
+            padding-top: 120px; /* Espaço suficiente para o cabeçalho fixo */
         }
 
         /* Estilo do texto */
@@ -46,7 +54,7 @@
         .highlight-green {
             color: #1DB954; /* Verde do Spotify */
             font-weight: bold;
-            margin-bottom: 20px; /* Deixa o espaçamento para "Saque solicitado" */
+            margin-bottom: 20px;
             display: block;
         }
 
@@ -57,27 +65,19 @@
         }
 
         .highlight-lowercase {
-            text-transform: lowercase; /* Altera para minúsculas */
-        }
-
-        /* Estilo da "Chave PIX cadastrada" */
-        .highlight-green-pix {
-            color: #1DB954; /* Verde do Spotify */
-            font-weight: bold;
-            margin-bottom: 0; /* Sem espaço extra */
-            display: inline; /* Faz o texto ocupar apenas o espaço necessário */
+            
         }
 
         /* Barra de Progresso */
         .progress-container {
             width: 100%;
-            max-width: 600px; /* Limita o tamanho da barra de progresso */
+            max-width: 400px; /* Limita a largura da barra de progresso */
             background-color: #444;
             border-radius: 10px;
-            margin-bottom: 30px;
-            position: relative;
+            margin: 0 auto 30px; /* Centraliza e adiciona margem abaixo */
             padding: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para destaque */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+			position: relative
         }
 
         .progress-bar {
@@ -112,7 +112,8 @@
             transition: all 0.3s ease;
             width: 100%;
             max-width: 300px;
-            margin-top: 20px;
+            margin-top: 0px;
+			margin-bottom: 20px;
         }
 
         button:hover {
@@ -121,7 +122,7 @@
             transform: translateY(-2px);
         }
 
-        button:active {
+        pepper_btn:active {
             transform: translateY(2px);
         }
 
@@ -161,13 +162,13 @@
             button {
                 padding: 14px 25px;
             }
+            .spotify-logo {
+                width: 150px; /* Logo menor para telas muito pequenas */
+            }
         }
 
         /* Rodapé */
         .footer {
-            position: absolute;
-            bottom: 10px; /* Coloca o rodapé no fundo da página */
-            width: 100%;
             font-size: 0.875rem;
             color: #ccc;
             text-align: center;
@@ -175,48 +176,117 @@
         }
 
         .footer a {
-            color: #1DB954; /* Verde do Spotify */
+            color: #1DB954;
             text-decoration: none;
             font-weight: bold;
         }
+		
 		.highlight-value {
             font-size: 1.125rem;
             font-weight: bold;
             text-transform: uppercase;
             color: #1DB954;
+		}
+		
+	/* Novo estilo para a caixa de saldo */
+.balance-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111111; /* Verde do Spotify */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px; /* Tamanho máximo da caixa */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.25rem; /* Aumenta o tamanho da fonte */
+}
+
+.balance-text {
+    font-weight: bold;
+    font-size: 1.25rem; /* Tamanho da fonte do texto */
+    color: white;
+}
+
+/* Ícone da carteira */
+.balance-box img {
+    width: 300px;
+
+}
+
+.alerta-urgente {
+   
+    color: red;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
 
     </style>
 </head>
 <body>
-    <!-- Logo do Spotify -->
-    <img class="spotify-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Spotify_logo_with_text.svg/1280px-Spotify_logo_with_text.svg.png" alt="Spotify Logo">
+    <!-- Cabeçalho com o logo do Spotify -->
+    <header>
+        <img class="spotify-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Spotify_logo_with_text.svg/1280px-Spotify_logo_with_text.svg.png" alt="Spotify Logo">
+    </header>
 
-    <!-- Texto -->
-    <div class="text">        
-		<img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; max-width: 100%; margin: 10px auto; display: block;">
-		<span class="highlight-green">PARABENS</span>
-        <span class="highlight-bold">Saque solicitado com sucesso!</span>
-        <span class="highlight-lowercase">Sua vaga está garantida! Temos uma taxa ÚNICA de cadastro de</span>
-        <span class="highlight-value">R$20,90</span>
-        <span class="highlight-lowercase"> para realizar seu saque.</span>
-        <br><br>
-        <span class="highlight-bold"><em>(OBRIGATÓRIA)</em></span>
-		<br><br>
-        <span class="highlight-bold">Clique no botão abaixo</span>
+    <!-- Conteúdo abaixo do cabeçalho -->
+    <div class="content">
+        <!-- Texto -->
+        <div class="text">
+            
+			<img src="./images/verificado.png" alt="Ícone de Parabéns" style="width: 270px; max-width: 100%; margin: 100px auto; display: block;">
+            <span class="highlight-green">PARABÉNS</span>
+			
+        <!-- Barra de Progresso -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+            <div class="progress-text">90%</div>
+        </div>
+		
+            <span class="highlight-lowercase">Sua vaga está garantida! Temos uma taxa  <strong>ÚNICA</strong> de cadastro de</span>
+            <span class="highlight-value">R$20,90</span>
+            <span class="highlight-lowercase"> para realizar seu saque.</span>
+            <br><br>
+            <span class="highlight-bold"><em>(OBRIGATÓRIA)</em></span>
+        </div>
+		
+		    <div class="balance-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/809/809482.png" alt="Ícone de Carteira" style="width: 50px; margin-right: 15px;">
+        <span class="balance-text">
+            Saldo disponível na sua conta: <strong>R$473,00</strong>
+        </span>
     </div>
 
 
-    <!-- Botão -->
-    <a href="URL_DO_SEU_PAGAMENTO_AQUI" target="_blank">
-    <button>PAGAR TAXA E SACAR</button>
-</a>
+<div class="alerta-urgente">
+		<div>
+        <!-- Botão -->
+    </div>
+		<br><br>
+		<br><br>
+         <a href="sem link" target="_blank" >
+        <button>Finalizar Cadastro e Receber Agora </button>
+        </a>
+    <p>Atenção! Seu saldo pode expirar. Se não for realizado agora, você perderá a oportunidade de garantir o valor de R$473,00 na sua conta.</p>
+</div>
 
-    <!-- Rodapé -->
-    <div class="footer">
-        This site is protected by reCAPTCHA and the Google 
-        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and 
-        <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply. <br>
-        © 2024 Spotify AB
+        <!-- Rodapé -->
+		<br><br>
+		<br><br>
+        <div class="footer">
+            This site is protected by reCAPTCHA and the Google 
+            <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and 
+            <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply. <br>
+            © 2024 Spotify AB
+        </div>
     </div>
 </body>
 </html>
