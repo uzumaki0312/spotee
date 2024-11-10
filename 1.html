@@ -1,213 +1,94 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+﻿<!doctype html>
+<html lang="pt-BR" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com Barra de Progresso</title>
-    <style>
-        /* Importando fontes modernas do Google Fonts */
-        body {
-            background: linear-gradient(135deg, #121212, #222222); /* Gradiente suave de fundo */
-            color: white;
-            font-family: 'Roboto', Arial, sans-serif; /* Fonte mais moderna e próxima do Spotify */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            padding: 0 20px; /* Adiciona padding nas laterais */
-            position: relative; /* Para garantir que o rodapé fique no fundo */
-            padding-bottom: 60px; /* Espaçamento para o rodapé não colidir com o botão */
-        }
+    <meta charset="utf-8" />
+    <title>Antecipar Pagamento</title>
+    <meta property="og:site_name" content="Spotify" />
+    <meta property="fb:app_id" content="174829003346" />
+    
+    <!-- Favicon -->
+    <link rel="icon" sizes="32x32" type="image/png" href="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png" />
+    <link rel="icon" sizes="16x16" type="image/png" href="https://open.spotifycdn.com/cdn/images/favicon16.1c487bff.png" />
+    <link rel="icon" href="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico" />
 
-        /* Logo do Spotify */
-        .spotify-logo {
-            width: 180px; /* Tamanho do logo */
-            margin-bottom: 30px; /* Mais espaçamento para separar do texto */
-        }
+    <!-- Meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-        /* Estilo do texto */
-        .text {
-            margin-bottom: 30px;
-            font-size: 1.125rem;
-            line-height: 1.6;
-            max-width: 500px; /* Limita a largura do texto */
-            margin-left: auto;
-            margin-right: auto;
-        }
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUI-Regular-cc3b1de388efa4cbca6c75cebc24585e.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUITitleVariable-8769ccfde3379b7ebcadd9529b49d0cc.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUITitle-Bold-37290f1de77f297fcc26d71e9afcf43f.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUI-Bold-4264b799009b1db5c491778b1bc8e5b7.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://encore.scdn.co/fonts/SpotifyMixUITitle-Extrabold-ba6c73cd7f82c81e49cf2204017803ed.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-        .highlight-green {
-            color: #1DB954; /* Verde do Spotify */
-            font-weight: bold;
-            margin-bottom: 20px; /* Deixa o espaçamento para "Saque solicitado" */
-            display: block;
-        }
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://open.spotifycdn.com/cdn/build/error-page/error-page.167c5854.css" />
+	<link rel="preload" href="https://support.scdn.co/web/_next/static/css/25f6d47778c0f346.css" as="style">
+	<link rel="stylesheet" href="https://support.scdn.co/web/_next/static/css/25f6d47778c0f346.css" data-n-g="">
+    <!-- Scripts -->
+    <script defer src="https://www.googleoptimize.com/optimize.js?id=GTM-W53X654"></script>
+    <script defer src="https://open.spotifycdn.com/cdn/js/gtm.ea4c34bc.js"></script>
+    <script defer src="https://open.spotifycdn.com/cdn/js/retargeting-pixels.5ab9cdc0.js"></script>
+</head>
 
-        .highlight-bold {
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .highlight-lowercase {
-            text-transform: lowercase; /* Altera para minúsculas */
-        }
-
-        /* Estilo da "Chave PIX cadastrada" */
-        .highlight-green-pix {
-            color: #1DB954; /* Verde do Spotify */
-            font-weight: bold;
-            margin-bottom: 0; /* Sem espaço extra */
-            display: inline; /* Faz o texto ocupar apenas o espaço necessário */
-        }
-
-        /* Barra de Progresso */
-        .progress-container {
-            width: 100%;
-            max-width: 600px; /* Limita o tamanho da barra de progresso */
-            background-color: #444;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            position: relative;
-            padding: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para destaque */
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 30px;
-            background-color: #1DB954;
-            border-radius: 10px;
-            animation: fillProgress 2s ease-in-out forwards, pulse 1.5s infinite alternate;
-        }
-
-        .progress-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-weight: bold;
-            color: white;
-            font-size: 1rem;
-        }
-
-        /* Estilo do botão */
-        button {
-            background: linear-gradient(145deg, #1DB954, #1AA34A);
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            font-family: 'Roboto', Arial, sans-serif;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 300px;
-            margin-top: 20px;
-        }
-
-        button:hover {
-            background: linear-gradient(145deg, #1AA34A, #1DB954);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
-
-        button:active {
-            transform: translateY(2px);
-        }
-
-        /* Animação da Barra de Progresso */
-        @keyframes fillProgress {
-            0% {
-                width: 0%;
-            }
-            100% {
-                width: 90%;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scaleX(1);
-            }
-            50% {
-                transform: scaleX(1.05);
-            }
-            100% {
-                transform: scaleX(1);
-            }
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            .text {
-                font-size: 1rem;
-            }
-            .highlight-green {
-                font-size: 1.25rem;
-            }
-            .progress-text {
-                font-size: 0.875rem;
-            }
-            button {
-                padding: 14px 25px;
-            }
-        }
-
-        /* Rodapé */
-        .footer {
-            position: absolute;
-            bottom: 10px; /* Coloca o rodapé no fundo da página */
-            width: 100%;
+<style>
+ .footer {
             font-size: 0.875rem;
             color: #ccc;
-            text-align: center;
-            padding: 10px 20px;
+            
+            
+            margin-top: 50px;
         }
 
         .footer a {
-            color: #1DB954; /* Verde do Spotify */
+            color: #1DB954;
             text-decoration: none;
             font-weight: bold;
         }
+		
+		.primary{background-color:var(--background-highlight,#3be477);}/*!sc*/
 
-    </style>
-</head>
+</style>
+
 <body>
-    <!-- Logo do Spotify -->
-    <img class="spotify-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Spotify_logo_with_text.svg/1280px-Spotify_logo_with_text.svg.png" alt="Spotify Logo">
+    <div class="wrapper">
+        <div class="icon">
+            <img alt="Logo" style="margin-top: 195px;" src="https://open.spotifycdn.com/cdn/images/error-page-logo.24aca703.svg" />
+        </div>
+        <div class="content">
+            <h1>Saque Solicitado</h1>
+		
+            <p>Saque solicitado com sucesso!</p><br>
+			<span>Seu saque será enviado em<strong> 30 dias para</strong> a Chave PIX cadastrada</span>
+			<br><br>
+			<span class="highlight-green"> Caso deseje antecipar seu saque e receber seu dinheiro imediatamente.</span>
+			<span class="highlight-green"><strong>pague a taxa de antecipação e saque agora!</strong></span>
+			<br><br>
+			
+			
+			<br><br>
+		
+			
+            <div>
+                <a href="link" class="primary">Antecipar Pagamento</a>
+               <!-- <a href="https://support.spotify.com/">Ajuda</a>-->
+			<!--<a href="https://community.spotify.com/t5/Spotify-Answers/tkb-p/Spotify-Answers" target="_blank" rel="noopener noreferrer" data-encore-id="buttonPrimary" class="Button-sc-qlcn5g-0 hRpqrX encore-text-body-medium-bold"><span class="ButtonInner-sc-14ud5tc-0 hCjoKJ encore-bright-accent-set">Acesse a Comunidade do Spotify</span><span class="ButtonFocus-sc-2hq6ey-0 dauFix"></span></a>-->
+				
+            </div>
+        </div>
 
-    <!-- Texto -->
-    <div class="text">
-        <span class="highlight-green">Saque solicitado</span>
-        <span class="highlight-bold">Saque solicitado com sucesso!</span> <!-- Adicionado ponto de exclamação -->
-        <span class="highlight-lowercase">seu saque será enviado em</span>
-        <span class="highlight-green-pix">Chave PIX cadastrada</span> <!-- Modificado para não ter espaço extra -->
-        Caso deseje antecipar seu saque e receber imediatamente seu dinheiro, <span class="highlight-bold">pague a taxa de antecipação e saque agora</span>
-        <span class="highlight-bold">Clique no botão abaixo</span>
+
+
+        <div class="footer">
+           <br>
+            © 2024 Spotify AB
+        </div>
+
     </div>
 
-    <!-- Barra de Progresso -->
-    <div class="progress-container">
-        <div class="progress-bar"></div>
-        <div class="progress-text">90%</div>
-    </div>
-
-    <!-- Botão -->
-    <a href="URL_DO_SEU_PAGAMENTO_AQUI" target="_blank">
-    <button>Antecipar Pagamento</button>
-</a>
-
-    <!-- Rodapé -->
-    <div class="footer">
-        This site is protected by reCAPTCHA and the Google 
-        <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and 
-        <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply. <br>
-        © 2024 Spotify AB
-    </div>
+    <script src="https://open.spotifycdn.com/cdn/build/error-page/error-page.31d6cfe0.js"></script>
 </body>
+
 </html>
